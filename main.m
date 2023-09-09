@@ -247,6 +247,13 @@
 		object: nil];
 }
 
+- (void) applicationDidBecomeActive: (NSNotification *) notification
+{
+	if (TerminalWindowController.numberOfActiveWindows == 0) {
+		[self openWindow: self];
+	}
+}
+
 -(void) openWindow: (id)sender
 {
 	TerminalWindowController *twc;
@@ -321,8 +328,6 @@
 			initialInput: nil];
                 [twc release];
 	}
-	else
-		[self openWindow: self];
 }
 
 
